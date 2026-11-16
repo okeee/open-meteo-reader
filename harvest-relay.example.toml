@@ -1,0 +1,12 @@
+# harvest-relay (https://github.com/okeee/harvest-relay) の設定例
+interval = 60
+endpoint = "http://uni.soracom.io"
+
+[[source]]
+name = "open-meteo"
+type = "poll"
+# 緯度・経度は自分の地点に置き換える。小数第 2 位 (約 1 km) まで丸めれば十分
+# Open-Meteo の current は 15 分ごとの値なので、--cache で 10 分間は API を呼ばずに前回の値を送る
+command = ["/usr/local/bin/open-meteo-reader", "--latitude", "35.68", "--longitude", "139.77",
+           "--cache", "/var/tmp/open-meteo-reader.json"]
+timeout = 30
